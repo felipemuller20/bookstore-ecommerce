@@ -1,0 +1,38 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+.page h2 {
+  text-align: center;
+}
+
+.page img {
+  margin: 25px;
+  width: 250px;
+  height: auto;
+  text-align: center;
+  box-shadow: 10px -8px 8px rgb(211, 209, 202), -10px 8px 8px rgb(211, 209, 202);
+}
+
+.page button {
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: rgb(162, 176, 130);
+  color: white;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.page button:hover {
+  opacity: 0.6;
+}

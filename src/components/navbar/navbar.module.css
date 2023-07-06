@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 100px;
+  align-items: center;
+  margin-block: 30px;
+}
+
+.nav h1 {
+  font-size: 42px;
+}
+
+.icon {
+  font-size: 38px;
+}

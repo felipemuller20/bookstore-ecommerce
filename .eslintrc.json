@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "@trybe/eslint-config-frontend/typescript",
+  "rules": {
+    "max-len": "off",
+    "import/no-unresolved": "off",
+    "react/jsx-no-bind": "off"
+  }
 }
