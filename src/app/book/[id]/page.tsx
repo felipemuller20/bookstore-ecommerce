@@ -1,9 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import { BiArrowBack } from 'react-icons/bi';
 import Link from 'next/link';
 import styles from './bookid.module.css';
 import { toReal } from '@/utils/toReal';
 import { roboto } from '@/utils/fonts';
+import AddToCard from '@/components/add-to-cart';
 
 type BookIdProps = {
   params: {
@@ -14,29 +17,36 @@ type BookIdProps = {
 export default async function BookId({ params }: BookIdProps) {
   const detailsPromise = await fetch(`https://api.mercadolibre.com/items/${params.id}`);
   const details = await detailsPromise.json();
+
+  function getData(id: string) {
+    const info = details.attributes.filter((attribute: { id: string, value_name: string }) => (
+      attribute.id === id));
+    if (info.length > 0) return info[0].value_name;
+    return 'Não informado';
+  }
   return (
     <div className={ `${styles.page} ${roboto.className}` }>
       <h1>
         {
-          details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'BOOK_TITLE')[0].value_name
+          getData('BOOK_TITLE')
         }
       </h1>
       <h2>
         {
-              details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'AUTHOR')[0].value_name
-            }
+          getData('AUTHOR')
+        }
       </h2>
       <h3>
         Publicado por:
         { ' ' }
         {
-          details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'BOOK_PUBLISHER')[0].value_name
+          getData('BOOK_PUBLISHER')
         }
       </h3>
       <p>
         {
-            details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'PAGES_NUMBER')[0].value_name
-          }
+          getData('PAGES_NUMBER')
+        }
         { ' ' }
         páginas
       </p>
@@ -44,7 +54,7 @@ export default async function BookId({ params }: BookIdProps) {
         Publicado em
         { ' ' }
         {
-          details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'PUBLICATION_YEAR')[0].value_name
+          getData('PUBLICATION_YEAR')
         }
       </p>
       <Image src={ `https://http2.mlstatic.com/D_NQ_NP_${details.thumbnail_id}-O.webp` } alt={ details.title } width={ 1000 } height={ 1000 } />
@@ -53,7 +63,7 @@ export default async function BookId({ params }: BookIdProps) {
         {' '}
         { toReal(details.price)}
       </p>
-      <button>Adicionar ao carrinho</button>
+      <AddToCard id={ params.id } price={ details.price } title={ details.title } image={ details.thumbnail_id } />
       <Link href="/">
         <BiArrowBack />
         Voltar
