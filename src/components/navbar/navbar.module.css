@@ -13,3 +13,21 @@
 .icon {
   font-size: 38px;
 }
+
+.nav a {
+  display: flex;
+  align-items: center;
+}
+
+.nav a span {
+  background-color: rgb(162, 176, 130);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-right: 5px;
+  color: white;
+}
