@@ -26,9 +26,9 @@ export default function Home() {
     <div className={ styles.page }>
       <SearchForm searchBooks={ searchBooks } />
       <main className={ styles.list }>
+        {books === null && (<h1>Não há livros que correspondam à busca atual</h1>)}
         {
-        books === null ? (<h1>Não há livros que correspondam à busca</h1>) : (
-          books.map((book: Book) => (
+          books && books.map((book: Book) => (
             <BookCard
               key={ book.id }
               id={ book.id }
@@ -37,7 +37,6 @@ export default function Home() {
               price={ book.price }
             />
           ))
-        )
       }
       </main>
     </div>

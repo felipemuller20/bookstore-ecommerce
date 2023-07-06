@@ -13,13 +13,22 @@ export default function SearchForm({ searchBooks }: SearchFormProps) {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const inputValue = inputRef.current?.value;
-    const productPromise = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${inputValue}`);
-    const products = await productPromise.json();
-    const searchedBooks = products.results.filter((item: any) => item.domain_id === 'MLB-BOOKS');
-    if (searchedBooks.length < 1) {
-      searchBooks(null);
+    let productPromise: any;
+    if (inputValue) {
+      productPromise = await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${inputValue}`);
     } else {
-      searchBooks(searchedBooks);
+      productPromise = await fetch('https://api.mercadolibre.com/sites/MLB/search?category=MLB1196&offset=15&limit=35');
+    }
+    try {
+      const products = await productPromise.json();
+      const searchedBooks = products.results.filter((item: any) => item.domain_id === 'MLB-BOOKS');
+      if (searchedBooks.length < 1) {
+        searchBooks(null);
+      } else {
+        searchBooks(searchedBooks);
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 
