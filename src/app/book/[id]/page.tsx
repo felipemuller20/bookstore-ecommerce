@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { BiArrowBack } from 'react-icons/bi';
+import Link from 'next/link';
 import styles from './bookid.module.css';
 import { toReal } from '@/utils/toReal';
 import { roboto } from '@/utils/fonts';
@@ -45,13 +47,17 @@ export default async function BookId({ params }: BookIdProps) {
           details.attributes.filter((attribute: { id: string, value_name: string }) => attribute.id === 'PUBLICATION_YEAR')[0].value_name
         }
       </p>
-      <p>
-        Preço:
+      <Image src={ `https://http2.mlstatic.com/D_NQ_NP_${details.thumbnail_id}-O.webp` } alt={ details.title } width={ 1000 } height={ 1000 } />
+      <p className={ styles.price }>
+        Valor:
         {' '}
         { toReal(details.price)}
       </p>
-      <Image src={ `https://http2.mlstatic.com/D_NQ_NP_${details.thumbnail_id}-O.webp` } alt={ details.title } width={ 1000 } height={ 1000 } />
       <button>Adicionar ao carrinho</button>
+      <Link href="/">
+        <BiArrowBack />
+        Voltar
+      </Link>
     </div>
   );
 }

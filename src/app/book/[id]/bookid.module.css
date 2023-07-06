@@ -8,6 +8,7 @@
 .page h1 {
   text-align: center;
   font-size: 36px;
+  color: rgb(143, 155, 114)
 }
 
 .page h2 {
@@ -33,6 +34,29 @@
   font-size: 18px;
 }
 
-.page button:hover {
+.page button:hover, .page a:hover {
   opacity: 0.6;
+}
+
+.page a, .error a {
+  align-self: flex-start;
+  padding-inline: 100px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.error h2 {
+  text-align: center;
+}
+
+.error {
+  padding-inline: 100px;
 }
