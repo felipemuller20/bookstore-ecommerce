@@ -70,7 +70,7 @@
   .total {
     font-size: 18px;
     font-weight: 700;
-    align-self: flex-end;
+    align-self: center;
     background-color: rgb(225, 223, 217);
     padding: 10px;
     text-align: center;

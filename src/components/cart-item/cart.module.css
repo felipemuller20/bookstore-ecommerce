@@ -29,6 +29,9 @@
   display: flex;
   align-items: center;
   margin-block: 10px;
+}
+
+.btns span {
   font-size: 20px;
 }
 
@@ -43,6 +46,10 @@
 
 .plusIcon {
   color: rgb(0, 184, 0);
+}
+
+.minusIcon, .plusIcon {
+  font-size: 28px;
 }
 
 .btns span {
