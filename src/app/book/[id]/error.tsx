@@ -22,7 +22,7 @@ export default function Error({
     <div className={ styles.error }>
       <h2>Algo deu errado!</h2>
       <Link href="/">
-        <BiArrowBack />
+        <BiArrowBack className={ styles.icon } />
         Voltar à página inicial
       </Link>
     </div>

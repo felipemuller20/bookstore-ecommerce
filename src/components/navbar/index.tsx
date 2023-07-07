@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { neonderthaw } from '@/utils/fonts';
 import styles from './navbar.module.css';
 import { RootState } from '@/Redux/store';
+import calculateTotalQuantity from '@/utils/calculateTotalQuantity';
 
 export default function NavBar() {
   const myCart = useSelector((state: RootState) => state.cart.cart);
@@ -17,7 +18,7 @@ export default function NavBar() {
       <Link href="/cart">
         {
           myCart.length > 0 && (
-            <span>{myCart.length}</span>
+            <span>{calculateTotalQuantity(myCart)}</span>
           )
         }
         <BsCart4 className={ styles.icon } />

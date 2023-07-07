@@ -4,3 +4,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.page h1 {
+  margin-top: 25px;
+  color: rgb(162,176,130);
+  text-align: center;
+}

@@ -7,3 +7,11 @@ export function successAlert(title: string, text: string) {
     text,
   });
 }
+
+export function errorAlert(title: string, text: string) {
+  Swal.fire({
+    icon: 'error',
+    title,
+    text,
+  });
+}
